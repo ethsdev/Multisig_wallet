@@ -24,7 +24,7 @@ function Menu({ className = '' }: Props): React.ReactElement<Props> {
           <LogoInfo />
           <h1 className='menuItems'>Multisig</h1>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', textAlign: 'center'}}>
+        <div style={{ display: 'flex', alignItems: 'center', textAlign: 'left'}}>
           <ThemeToggle />
           <ChainInfo />
         </div>
@@ -50,8 +50,8 @@ const StyledDiv = styled.div`
     justify-content: space-between;
     padding: 0 1.5rem;
     width: 100%;
-    max-width: var(--width-full);
-    margin: 0 auto;
+    // max-width: var(--width-full);
+    // margin: 0 auto;
   }
 
   &.isLoading {

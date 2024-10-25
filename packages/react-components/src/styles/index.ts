@@ -201,29 +201,29 @@ export default createGlobalStyle<Props>(({ uiHighlight }: Props) => `
     &:not(.isDisabled):not(.isIcon):not(.isBasic),
     &.withoutLink:not(.isDisabled) {
       .ui--Icon {
-        background: ${getHighlight(uiHighlight)};
-        color: ${getContrast(uiHighlight)};
+        background: var(--bg-page);
+        color: var(--color-text);
       }
     }
 
     &.isBasic:not(.isDisabled):not(.isIcon):not(.isSelected) {
       &:not(.isReadOnly) {
-        box-shadow: 0 0 1px ${getHighlight(uiHighlight)};
+        box-shadow: 0 0 1px var(--color-text-hover);
       }
 
       .ui--Icon {
-        color: ${getHighlight(uiHighlight)};
+        color: var(--color-text);
       }
     }
 
     &.isSelected {
-      box-shadow: 0 0 1px ${getHighlight(uiHighlight)};
+      box-shadow: 0 0 1px var(--bg-page);
     }
 
     &:hover:not(.isDisabled):not(.isReadOnly),
     &.isSelected {
-      background: ${getHighlight(uiHighlight)};
-      color: ${getContrast(uiHighlight)};
+      background: var(--bg-page);
+      color: var(--color-text-hover);
       text-shadow: none;
 
       &:not(.isIcon),
@@ -240,14 +240,14 @@ export default createGlobalStyle<Props>(({ uiHighlight }: Props) => `
     &.withoutLink:not(.isDisabled) {
       &:hover {
         .ui--Icon {
-          color: ${getContrast(uiHighlight)};
+          color: var(--color-text-hover);
         }
       }
 
       .ui--Icon {
         background: transparent;
         color: inherit;
-        color: ${getHighlight(uiHighlight)};
+        // color: ${getHighlight(uiHighlight)};
       }
     }
   }
@@ -269,10 +269,10 @@ export default createGlobalStyle<Props>(({ uiHighlight }: Props) => `
     }
 
     .ui--Toggle.isChecked .ui--Toggle-Slider {
-      background: ${getHighlight(uiHighlight)};
+      background: var(--bg-toggle);
 
       &::before {
-        border-color: ${getHighlight(uiHighlight)};
+        border-color: var(--border-table);
       }
     }
   }
@@ -326,10 +326,10 @@ export default createGlobalStyle<Props>(({ uiHighlight }: Props) => `
     .ui--Toggle.isChecked {
       &:not(.isRadio) {
         .ui--Toggle-Slider {
-          background: ${getHighlight(uiHighlight)} !important;
+          background: var(--bg-toggle);
 
           &:before {
-            border-color: ${getHighlight(uiHighlight)} !important;
+            border-color: var(--border-table);
           }
         }
       }
@@ -536,7 +536,7 @@ export default createGlobalStyle<Props>(({ uiHighlight }: Props) => `
   // we treat h5 and label as equivalents
   label, h5 {
     color: var(--color-label);
-    font-size: var(--font-size-label);
+    // font-size: var(--font-size-label);
     font-style: normal;
     font-weight: var(--font-weight-label);
     line-height: 1rem;

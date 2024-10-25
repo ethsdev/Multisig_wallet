@@ -6,8 +6,8 @@ import type { DropdownOptions } from '../util/types.js';
 
 import React, { useEffect } from 'react';
 
-import Dropdown from '../Dropdown.js';
-import { filterDropdownItems } from '../util/index.js';
+// import Dropdown from '../Dropdown.js';
+// import { filterDropdownItems } from '../util/index.js';
 import { useApi } from '@polkadot/react-hooks';
 
 interface Props {
@@ -20,7 +20,7 @@ interface Props {
   value: SubmittableExtrinsicFunction<'promise'>;
 }
 
-function getSectionFromChain (chain: string, onChange: (value: string) => void) {
+function setSectionFromChain (chain: string, onChange: (value: string) => void) {
   switch (chain) {
     case 'commune':
       onChange('subspaceModule');
@@ -33,16 +33,16 @@ function getSectionFromChain (chain: string, onChange: (value: string) => void) 
   }
 }
 
-function getSectionNameFromChain (chain: string): any {
-  switch (chain) {
-    case 'commune':
-      return 'SubSpaceModule';
-    case 'Bittensor':
-      return 'SubtensorModule';
-    default:
-      return '';
-  }
-}
+// function getSectionNameFromChain (chain: string): any {
+//   switch (chain) {
+//     case 'commune':
+//       return 'SubSpaceModule';
+//     case 'Bittensor':
+//       return 'SubtensorModule';
+//     default:
+//       return '';
+//   }
+// }
 
 function isBitOrCom (chain: string): any {
   switch (chain) {
@@ -55,30 +55,25 @@ function isBitOrCom (chain: string): any {
   }
 }
 
-function SelectSection ({ className = '', defaultValue, isDisabled, isError, onChange, options, value }: Props): React.ReactElement<Props> {
+function SelectSection ({ onChange }: Props): React.ReactElement<Props> {
   const { api } = useApi();
   useEffect(() => {
     onChange && isBitOrCom(api.runtimeChain.toString()) &&
-    getSectionFromChain(api.runtimeChain.toString(), onChange);
+    setSectionFromChain(api.runtimeChain.toString(), onChange);
   }, [])
   return (
-    <>
-      {
-        !isBitOrCom(api.runtimeChain.toString()) ?
-        <Dropdown
-          className={`${className} ui--DropdownLinked-Sections`}
-          defaultValue={defaultValue}
-          isDisabled={isDisabled}
-          isError={isError}
-          onChange={onChange}
-          onSearch={filterDropdownItems}
-          options={options}
-          value={value.section}
-          withLabel={false}
-        />:
-        <h1>{getSectionNameFromChain(api.runtimeChain.toString())}:</h1>
-      }
-    </>
+    <></>
+    // <Dropdown
+    //   className={`${className} ui--DropdownLinked-Sections`}
+    //   defaultValue={defaultValue}
+    //   isDisabled={isDisabled}
+    //   isError={isError}
+    //   onChange={onChange}
+    //   onSearch={filterDropdownItems}
+    //   options={options}
+    //   value={value.section}
+    //   withLabel={false}
+    // />
   );
 }
 

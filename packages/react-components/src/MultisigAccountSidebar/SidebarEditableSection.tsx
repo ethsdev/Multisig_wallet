@@ -1,16 +1,13 @@
 // Copyright 2017-2024 @polkadot/react-components authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { useCallback, useEffect } from 'react';
 
-import { useAccountInfo, useOutsideClick } from '@polkadot/react-hooks';
+import { useAccountInfo} from '@polkadot/react-hooks';
 import { keyring } from '@polkadot/ui-keyring';
 
-// import Tags from '../Tags.js';
 import AccountMenuButtons from './AccountMenuButtons.js';
 import AddressSection from './AddressSection.js';
-// import Flags from './Flags.js';
-
 interface Props {
   accountIndex: string | undefined;
   address: string;
@@ -19,13 +16,8 @@ interface Props {
   sidebarRef: React.RefObject<HTMLDivElement>;
 }
 
-function SidebarEditableSection ({ accountIndex, address, isBeingEdited, onUpdateName, sidebarRef }: Props): React.ReactElement<Props> {
+function SidebarEditableSection ({ accountIndex, address, isBeingEdited, onUpdateName }: Props): React.ReactElement<Props> {
   const { flags, isEditing, isEditingName, name, onForgetAddress, onSaveName, onSaveTags, setIsEditingName, setIsEditingTags, setName, setTags, toggleIsEditingName, toggleIsEditingTags } = useAccountInfo(address);
-
-  const refs = useMemo(
-    () => [sidebarRef],
-    [sidebarRef]
-  );
 
   useEffect((): void => {
     isBeingEdited(isEditing());
@@ -47,8 +39,6 @@ function SidebarEditableSection ({ accountIndex, address, isBeingEdited, onUpdat
       }
     }, [isEditing, setName, setTags, setIsEditingName, setIsEditingTags, address]);
 
-  useOutsideClick(refs, onCancel);
-
   return (
     <>
       <AddressSection
@@ -59,20 +49,6 @@ function SidebarEditableSection ({ accountIndex, address, isBeingEdited, onUpdat
         onChange={setName}
         value={address}
       />
-      {/* <div
-        className='ui--AddressMenu-tags'
-        data-testid='sidebar-tags'
-      >
-        <Tags
-          isEditable
-          isEditing={isEditingTags}
-          onChange={setTags}
-          value={tags}
-          withEditButton={false}
-          withTitle
-        />
-      </div>
-      <Flags flags={flags} /> */}
       <AccountMenuButtons
         flags={flags}
         isEditing={isEditing()}

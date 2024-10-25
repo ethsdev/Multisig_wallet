@@ -126,7 +126,7 @@ function AccountMenuButtons ({ className = '', flags, isEditing, isEditingName, 
         <TransferModal
           key='modal-transfer'
           onClose={toggleIsTransferOpen}
-          recipientId={recipientId}
+          senderId={recipientId}
         />
       )}
     </StyledDiv>
@@ -134,13 +134,13 @@ function AccountMenuButtons ({ className = '', flags, isEditing, isEditingName, 
 }
 
 const StyledDiv = styled.div`
-  width: 100%;
+  width: 40%;
 
   .ui--Button-Group {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    margin-bottom: 0;
+    justify-content: flex-start;
+    margin: 0;
   }
 `;
 

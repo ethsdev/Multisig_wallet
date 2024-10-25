@@ -5,23 +5,19 @@ import React from 'react';
 
 import AddressInfo from '../AddressInfo.js';
 import { styled } from '../styled.js';
-import { useTranslation } from '../translate.js';
 
 interface Props {
   address: string;
   className?: string;
 }
 
-const WITH_BALANCE = { available: true, bonded: true, free: true, locked: true, reserved: true, total: true };
+// const WITH_BALANCE = { available: true, bonded: true, free: true, locked: true, reserved: true, total: true };
+const WITH_BALANCE = { available: true, total: true };
 
 function Balances ({ address, className }: Props): React.ReactElement<Props> | null {
-  const { t } = useTranslation();
 
   return (
     <StyledSection className={className}>
-      <div className='ui--AddressMenu-sectionHeader'>
-        {t('balance')}
-      </div>
       <AddressInfo
         address={address}
         className='balanceExpander'
@@ -34,13 +30,19 @@ function Balances ({ address, className }: Props): React.ReactElement<Props> | n
 }
 
 const StyledSection = styled.section`
+  .ui--AddressMenu-sectionHeader {
+    padding: 20px;
+  }
+  .column:not(.column--expander) {
+    flex: none !important;
+    column-gap: 4.2rem !important;
+  }
   .balanceExpander {
     justify-content: flex-start;
-
+    padding-left: 60px;
     .column {
       width: auto;
       max-width: 18.57rem;
-
       label {
         text-align: left;
         color: inherit;
@@ -51,6 +53,7 @@ const StyledSection = styled.section`
       }
     }
   }
+  margin-bottom: 0 !important;
 `;
 
 export default React.memo(Balances);

@@ -3,9 +3,9 @@
 
 import type { ActionStatus } from '@polkadot/react-components/Status/types';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { Button, FilterInput, styled, SummaryBox, TableBook } from '@polkadot/react-components';
+import { Button, styled, SummaryBox, Table_Book } from '@polkadot/react-components';
 import { useAddresses, useFavorites, useNextTick, useToggle } from '@polkadot/react-hooks';
 
 // import CreateModal from '../modals/Create.js';
@@ -28,12 +28,7 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
   const [isCreateOpen, toggleCreate] = useToggle(false);
   const [favorites, toggleFavorite] = useFavorites(STORE_FAVS);
   const [sortedAddresses, setSortedAddresses] = useState<SortedAddress[] | undefined>();
-  const [filterOn, setFilter] = useState<string>('');
   const isNextTick = useNextTick();
-
-  const headerRef = useRef<([React.ReactNode?, string?, number?] | false)[]>([
-    [t('Contacts'), 'start', 4]
-  ]);
 
   useEffect((): void => {
     setSortedAddresses(
@@ -58,14 +53,6 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
         />
       )}
       <SummaryBox className='summary-box-contacts'>
-        {/* <section>
-          <FilterInput
-            className='media--1000'
-            filterOn={filterOn}
-            label={t('filter by name or tags')}
-            setFilter={setFilter}
-          />
-        </section> */}
         <Button.Group>
           <Button
             className='add-contact-button'
@@ -75,22 +62,21 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
           />
         </Button.Group>
       </SummaryBox>
-      <TableBook
+      <Table_Book
         className='address-book-table'
         empty={isNextTick && sortedAddresses && t('no saved addresses!')}
-        // header={headerRef.current}
         isSplit
       >
         {isNextTick && sortedAddresses?.map(({ address, isFavorite }): React.ReactNode => (
           <Address
             address={address}
-            filter={filterOn}
+            filter={''}
             isFavorite={isFavorite}
             key={address}
             toggleFavorite={toggleFavorite}
           />
         ))}
-      </TableBook>
+      </Table_Book>
     </StyledDiv>
   );
 }
@@ -100,22 +86,17 @@ const StyledDiv = styled.div`
     align-items: center;
   }
   .add-contact-button {
-    border: 1px solid var(--bg-toggle);
-    border-radius: 5px;
-    color: var(--color-text) !important;
-    background: var(--bg-page) !important;
+    border: 1px solid var(--border-button);
+    border-radius: 1rem;
+    margin: 0;
   }
   .add-contact-button:hover {
-    color: var(--color-text-hover) !important;
-  }
-  .ui--Icon {
-    color: var(--color-text) !important;
-    background: var(--bg-page) !important;
+    border-color: var(--border-input-hover);
   }
   .address-book-table {
-    border: 1px solid var(--bg-toggle);
-    border-radius: 5px;
-    padding: 0 3rem 1rem;
+    border: 1px solid var(--border-table);
+    border-radius: 1rem;
+    padding: 0 3rem;
     table {
       margin-bottom: 0 !important;
       border-radius: 5px;
@@ -124,13 +105,13 @@ const StyledDiv = styled.div`
       margin-bottom: 0 !important;
     }
     td {
-      background: var(--bg-page) !important;
+      // background: var(--bg-page) !important;
       div.empty {
         opacity: 1 !important;
       }
     }
     th {
-      background: var(--bg-page) !important;
+      // background: var(--bg-page) !important;
     }
   }
 `;

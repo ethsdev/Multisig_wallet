@@ -7,7 +7,7 @@ import type { ModalProps as Props } from '../types.js';
 
 import React, { useCallback, useMemo, useState } from 'react';
 
-import { Button, Input_book, InputAddress, Modal, styled } from '@polkadot/react-components';
+import { Button, Input, InputAddress, Modal, styled } from '@polkadot/react-components';
 import { useApi, useCall } from '@polkadot/react-hooks';
 import { keyring } from '@polkadot/ui-keyring';
 import { hexToU8a } from '@polkadot/util';
@@ -118,27 +118,16 @@ function Create ({ onClose, onStatusChange }: Props): React.ReactElement<Props> 
       onClose={onClose}
     >
       <Modal.Content>
-        {/* <AddressRow
-          defaultName={name}
-          noDefaultNameOpacity
-          value={
-            isAddressValid
-              ? info?.accountId?.toString()
-              : undefined
-          }
-        > */}
         <div className='ui--Label-Input'>
           <div className='ui--lable'>
             <span>Address:</span>
           </div>
-          <Input_book
+          <Input
             autoFocus
             className='full'
             isError={!isAddressValid}
-            // label={t('address')}
             onChange={_onChangeAddress}
             onEnter={_onCommit}
-            // placeholder={t('new address')}
             value={addressInput}
           />
         </div>
@@ -146,16 +135,14 @@ function Create ({ onClose, onStatusChange }: Props): React.ReactElement<Props> 
           <div className='ui--lable'>
             <span>Name:</span>
           </div>
-          <Input_book
+          <Input
             className='full'
             isError={!isNameValid}
-            // label={t('name')}
             onChange={_onChangeName}
             onEnter={_onCommit}
             value={name}
           />
         </div>
-        {/* </AddressRow> */}
       </Modal.Content>
       <Modal.Actions className='modal-Bg'>
         <Button
@@ -175,7 +162,7 @@ const StyledModal = styled(Modal)`
     width: 100%
   }
   .modal-Bg {
-    background: transparent !important;
+    background: var(--bg-page) !important;
   }
   .ui--Label-Input {
     width: 100%;
@@ -185,21 +172,9 @@ const StyledModal = styled(Modal)`
       width: 100px;
     }
   }
-  .ui--Button {
-    background: transparent !important;
-    color: var(--color-text) !important;
-  }
   .ui--Button-Group {
     margin-top: 0 !important;
-    margin-bottom: 0 !important;
-  }
-  .ui--Icon {
-    background: transparent !important;
-    color: var(--color-text) !important;
-  }
-  .ui--Button:hover {
-    background: transparent !important;
-    color: var(--color-text-hover) !important;
+    margin-bottom: 1rem !important;
   }
 `;
 export default React.memo(Create);

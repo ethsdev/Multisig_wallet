@@ -9,7 +9,6 @@ import { styled } from '../styled.js';
 import Column from './Column/index.js';
 import Row from './Row/index.js';
 import Body from './Body.js';
-// import Foot from './Foot.js';
 import Head from './Head.js';
 
 interface Props {
@@ -29,13 +28,7 @@ interface Props {
   noBodyTag?: boolean;
 }
 
-// const COLUMN_INDEXES = {
-//   2: [0, 1],
-//   3: [0, 1, 2]
-// } as const;
-
 function TableBase ({ children, className = '', empty, emptySpinner, filter, header, headerChildren, isFixed, isInline, legend, noBodyTag }: Props): React.ReactElement<Props> {
-  // const numColumns = useWindowColumns(maxColumns);
   
   const isArray = Array.isArray(children);
   const isEmpty = !children || (isArray && children.length === 0);
@@ -50,30 +43,6 @@ function TableBase ({ children, className = '', empty, emptySpinner, filter, hea
     </Head>
   );
 
-  // if (isSplit && isArray && !isEmpty && (numColumns !== 1)) {
-  //   return (
-  //     <StyledDiv className={`${className} ui--Table isSplit`}>
-  //       {legend}
-  //       <table className='noMargin'>
-  //         {headerNode}
-  //       </table>
-  //       <div className='ui--Table-Split'>
-  //         {COLUMN_INDEXES[numColumns].map((column) => (
-  //           <div
-  //             className={`ui--Table-Split-${numColumns}`}
-  //             key={column}
-  //           >
-  //             <table className='noMargin'>
-  //               <tbody className='ui--Table-Body'>
-  //                 {children.filter((_, i) => (i % numColumns) === column)}
-  //               </tbody>
-  //             </table>
-  //           </div>
-  //         ))}
-  //       </div>
-  //     </StyledDiv>
-  //   );
-  // }
 
   return (
     <StyledDiv className={`${className} ui--Table`}>
@@ -88,10 +57,6 @@ function TableBase ({ children, className = '', empty, emptySpinner, filter, hea
         >
           {children}
         </Body>
-        {/* <Foot
-          footer={footer}
-          isEmpty={isEmpty}
-        /> */}
       </table>
     </StyledDiv>
   );
@@ -109,7 +74,6 @@ const StyledDiv = styled.div`
   .ui--Table-Split {
     display: flex;
     flex-wrap: nowrap;
-    margin-bottom: 1.5rem;
 
     > .ui--Table-Split-3 {
       max-width: 33.3%;
@@ -153,11 +117,11 @@ const StyledDiv = styled.div`
       td,
       &:not(.filter) th {
         &:first-child {
-          padding-left: 1.5rem;
+          // padding-left: 1.5rem;
         }
 
         &:last-child {
-          padding-right: 0.75rem;
+          
         }
 
         &.all {
@@ -189,7 +153,7 @@ const StyledDiv = styled.div`
 
     td {
       background: var(--bg-table);
-      padding: 0 1rem;
+      padding: 0;
       text-align: left;
       vertical-align: middle;
 
@@ -212,7 +176,7 @@ const StyledDiv = styled.div`
 
       div.empty {
         opacity: var(--opacity-light);
-        padding: 0.25rem;
+        padding: 1rem 0;
       }
 
       .ui--Spinner {
