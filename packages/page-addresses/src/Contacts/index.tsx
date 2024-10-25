@@ -3,14 +3,15 @@
 
 import type { ActionStatus } from '@polkadot/react-components/Status/types';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { Button, FilterInput, styled, SummaryBox, Table } from '@polkadot/react-components';
+import { Button, styled, SummaryBox, Table_Book } from '@polkadot/react-components';
 import { useAddresses, useFavorites, useNextTick, useToggle } from '@polkadot/react-hooks';
 
-import CreateModal from '../modals/Create.js';
+// import CreateModal from '../modals/Create.js';
+import CreateModal from '../modals_book/Create.js';
 import { useTranslation } from '../translate.js';
-import Address from './Address.js';
+import Address from './Address_book.js';
 
 interface SortedAddress { address: string; isFavorite: boolean }
 
@@ -27,12 +28,7 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
   const [isCreateOpen, toggleCreate] = useToggle(false);
   const [favorites, toggleFavorite] = useFavorites(STORE_FAVS);
   const [sortedAddresses, setSortedAddresses] = useState<SortedAddress[] | undefined>();
-  const [filterOn, setFilter] = useState<string>('');
   const isNextTick = useNextTick();
-
-  const headerRef = useRef<([React.ReactNode?, string?, number?] | false)[]>([
-    [t('contacts'), 'start', 4]
-  ]);
 
   useEffect((): void => {
     setSortedAddresses(
@@ -57,37 +53,30 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
         />
       )}
       <SummaryBox className='summary-box-contacts'>
-        <section>
-          <FilterInput
-            className='media--1000'
-            filterOn={filterOn}
-            label={t('filter by name or tags')}
-            setFilter={setFilter}
-          />
-        </section>
         <Button.Group>
           <Button
+            className='add-contact-button'
             icon='plus'
             label={t('Add contact')}
             onClick={toggleCreate}
           />
         </Button.Group>
       </SummaryBox>
-      <Table
-        empty={isNextTick && sortedAddresses && t('no addresses saved yet, add any existing address')}
-        header={headerRef.current}
+      <Table_Book
+        className='address-book-table'
+        empty={isNextTick && sortedAddresses && t('no saved addresses!')}
         isSplit
       >
         {isNextTick && sortedAddresses?.map(({ address, isFavorite }): React.ReactNode => (
           <Address
             address={address}
-            filter={filterOn}
+            filter={''}
             isFavorite={isFavorite}
             key={address}
             toggleFavorite={toggleFavorite}
           />
         ))}
-      </Table>
+      </Table_Book>
     </StyledDiv>
   );
 }
@@ -95,6 +84,35 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
 const StyledDiv = styled.div`
   .summary-box-contacts {
     align-items: center;
+  }
+  .add-contact-button {
+    border: 1px solid var(--border-button);
+    border-radius: 1rem;
+    margin: 0;
+  }
+  .add-contact-button:hover {
+    border-color: var(--border-input-hover);
+  }
+  .address-book-table {
+    border: 1px solid var(--border-table);
+    border-radius: 1rem;
+    padding: 0 3rem;
+    table {
+      margin-bottom: 0 !important;
+      border-radius: 5px;
+    }
+    .ui--Table-Split {
+      margin-bottom: 0 !important;
+    }
+    td {
+      // background: var(--bg-page) !important;
+      div.empty {
+        opacity: 1 !important;
+      }
+    }
+    th {
+      // background: var(--bg-page) !important;
+    }
   }
 `;
 

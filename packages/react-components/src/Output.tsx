@@ -57,7 +57,6 @@ const StyledLabelled = styled(Labelled)`
     border-style: dashed;
     opacity: 1;
   }
-
   pre {
     margin: 0;
     overflow: hidden;

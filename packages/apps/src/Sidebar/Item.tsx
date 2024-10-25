@@ -14,6 +14,7 @@ interface Props {
   isLink?: boolean;
   isToplevel?: boolean;
   route: ItemRoute;
+  isActive: boolean;
 }
 
 const DUMMY_COUNTER = () => 0;
@@ -23,7 +24,7 @@ function Item ({ className = '', classNameText, isLink, isToplevel, route: { Mod
   const count = useCounter();
 
   return (
-    <StyledLi className={`${className} ui--MenuItem ${count ? 'withCounter' : ''} ${isLink ? 'isLink' : ''} ${isToplevel ? 'topLevel' : ''}`}>
+    <StyledLi className={`${className} ui--MenuItem ${count ? 'withCounter' : ''} ${isLink ? 'isLink' : ''} ${isToplevel ? 'topLevel highlight--color-contrast' : ''}`}>
       <a
         href={Modal ? undefined : (href || `#/${name}`)}
         onClick={Modal ? toggleModal : undefined}
@@ -64,10 +65,9 @@ const StyledLi = styled.li`
 
     &.isActive.highlight--color-contrast {
       font-weight: var(--font-weight-normal);
-      color: var(--color-text);
-
       a {
-        background-color: var(--bg-tabs);
+        color: var(--color-text-hover) !important;
+        font-weight: var(--font-weight-bold) !important;
       }
     }
 
@@ -76,6 +76,7 @@ const StyledLi = styled.li`
 
       a {
         padding: 0.857rem 1.429rem 0.857rem;
+        // color: var(--color-text);
         cursor: default;
       }
 
@@ -94,11 +95,13 @@ const StyledLi = styled.li`
   }
 
   a {
-    color: inherit !important;
+    color: var(--color-text) !important;
     display: block;
     padding: 0.5rem 1.15rem 0.57rem;
     text-decoration: none;
     line-height: 1.5rem;
+    font-weight: var(--font-weight-normal) !important;
+
   }
 
   .ui--Badge {
@@ -112,6 +115,12 @@ const StyledLi = styled.li`
   .sidebarItem {
     font-size: var(--font-size-h1);
   }
+  
+  a:hover {
+    background-color: var(--bg-page) !important;
+    color: var(--color-text-hover) !important;
+  }
+
 `;
 
 export default React.memo(Item);

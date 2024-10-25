@@ -32,8 +32,8 @@ function Labelled ({ children, className = '', isFull, isHidden, isOuter, isSmal
   return (
     <StyledDiv className={`${className} ui--Labelled ${isSmall ? 'isSmall' : ''} ${isFull ? 'isFull' : ''} ${isOuter ? 'isOuter' : ''}`}>
       <label>{withEllipsis
-        ? <div className='withEllipsis'>{label}</div>
-        : label
+        ? <div className='withEllipsis'>{label == 'None' ? '': label}</div>
+        : label == 'None' ? '': label
       }</label>
       {labelExtra && <div className='labelExtra'>{labelExtra}</div>}
       <div className='ui--Labelled-content'>
@@ -54,8 +54,8 @@ const StyledDiv = styled.div`
 
     .ui--CopyButton {
       position: absolute;
-      top: 0.9rem;
-      right: 0.5rem;
+      top: 0.3rem;
+      right: 0.1rem;
     }
 
     .withEllipsis {
@@ -75,21 +75,23 @@ const StyledDiv = styled.div`
     }
 
     &:not(.isSmall) {
-      padding-left: 2rem;
+      // padding-left: 2rem;
 
       &:not(.isOuter) {
         > label,
         .labelExtra {
           position: absolute;
           text-align: left;
-          top: 0.75rem;
+          top: 3.5rem;
+          left: 0;
           z-index: 1;
         }
 
         > label {
-          left: 3.55rem;
+          left: 0rem;
           right: 0;
           text-align: left;
+          top: -1rem;
         }
       }
 
@@ -138,8 +140,8 @@ const StyledDiv = styled.div`
 
         .ui.selection.dropdown {
           &:not(.floating) {
-            padding-left: 1.45rem;
-            padding-top: 1.75rem;
+            padding-left: 4rem;
+            // padding-top: 1.75rem;
           }
 
           &.floating {
@@ -154,14 +156,14 @@ const StyledDiv = styled.div`
           }
 
           &.search:not(.multiple) > input.search {
-            padding-left: 1.45rem;
-            padding-top: 1.75rem;
+            padding-left: 4rem;
+            // padding-top: 1.75rem;
           }
 
           > .delete.icon,
           > .dropdown.icon,
           > .search.icon {
-            top: 1.75rem;
+            // top: 1.75rem;
           }
         }
 
@@ -169,7 +171,7 @@ const StyledDiv = styled.div`
         .ui.input > input,
         .ui--output {
           padding-left: 1.45rem;
-          padding-top: 1.75rem;
+          // padding-top: 1.75rem;
         }
 
         .ui--Messages {

@@ -137,7 +137,7 @@ function Sidebar ({ className = '' }: Props): React.ReactElement<Props> {
 
 const StyledDiv = styled.div`
   width: 16%;
-  height:94vh;
+  height:89vh;
   padding: 0;
   z-index: 220;
   // position: relative;
@@ -156,8 +156,6 @@ const StyledDiv = styled.div`
   }
 
   &.isLoading {
-    background: #fff !important;
-
     .menuActive {
       background: var(--bg-page);
     }
@@ -200,7 +198,7 @@ const StyledDiv = styled.div`
       display: inline-block;
     }
 
-    > li + li {
+    > li {
       margin-left: 0.375rem
     }
   }
