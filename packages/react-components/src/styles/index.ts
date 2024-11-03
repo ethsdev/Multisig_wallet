@@ -137,6 +137,17 @@ export default createGlobalStyle<Props>(({ uiHighlight }: Props) => `
     border-style: solid !important;
   }
 
+  .ui--CopyButton {
+    top: 1rem !important;
+    right: 1.3rem !important;
+    .ui--Button {
+      padding: 0 !important;
+    }
+  }
+  
+  .ui.dropdown .menu>.message {
+    color: var(--color-text) !important;
+  }
   .ui--MenuItem {
     & .ui--Badge {
       color: ${countBrightness(uiHighlight) < BRIGHTNESS ? '#fff' : '#424242'};
@@ -599,7 +610,7 @@ export default createGlobalStyle<Props>(({ uiHighlight }: Props) => `
     color: var(--color-label);
     font-style: normal;
     font-weight: var(--font-weight-label);
-    line-height: 1rem;
+    // line-height: 1rem;
     vertical-align: middle;
     font-size: var(--font-size-h2);
   }

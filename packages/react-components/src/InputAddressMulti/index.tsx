@@ -37,12 +37,10 @@ function InputAddressMulti ({ available, availableLabel, className = '', default
   const [selected, setSelected] = useState<string[]>([]);
   const filter = useDebounce(_filter);
   const isNextTick = useNextTick();
-
-  console.log("", setFilter);
   
   useEffect((): void => {
     defaultValue && setSelected(defaultValue);
-  }, [defaultValue]);
+  }, [defaultValue, setFilter]);
 
   useEffect((): void => {
     selected && onChange(selected);
@@ -131,6 +129,28 @@ const StyledDiv = styled.div`
 
         .ui--AddressToggle {
           padding-left: 0.75rem;
+
+          .ui--AddressToggle-address {
+            flex: none;
+            width: 40%;
+          }
+
+          @media only screen and (max-width: 1440px) {
+            .ui--AddressToggle-address {
+              flex: none;
+              width: 30%;
+            }
+            .address-text {
+              width: 60%;
+            }
+          }
+
+          .address-text {
+            width: 50%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+          }
         }
 
         .ui--AddressMini-address {

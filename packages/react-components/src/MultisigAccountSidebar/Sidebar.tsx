@@ -58,7 +58,7 @@ function MultisigFullSidebar({ address, className = '', onUpdateName, toggleMult
           toggleProxyOverview={toggleProxyOverview}
         />
       </div>
-      <div style={{ display: 'flex' }}>
+      <div className='account_detail'>
         <div className='ui--ScrollSection'>
           <h1 >Account Detail</h1>
           {/* <Identity
@@ -71,7 +71,7 @@ function MultisigFullSidebar({ address, className = '', onUpdateName, toggleMult
           />
         </div>
         <div className='hash'>
-          <h1 >Recent Transaction</h1>
+          <h1 >Pending Transaction</h1>
           <div className='subCard'>
             {hashes?.map((item, key) =>
               <MultisigOutput
@@ -100,6 +100,12 @@ const StyledDiv = styled.div`
   // overflow-y: hidden;
   width: 100%;
 
+  .account_detail {
+    display: flex;
+    @media only screen and (max-width: 1400px) {
+      display: block;
+    }
+  }
   .hash {
     width: 62%;
     background-color: var(--bg-menubar);
@@ -111,6 +117,11 @@ const StyledDiv = styled.div`
       background-color: var(--bg-subCard);
       border-radius: 1rem;
       height: 20rem;
+      padding: 0.5rem;
+    }
+    @media only screen and (max-width: 1400px) {
+      width: 98%;
+      margin: 1rem 0rem 0rem 1rem;
     }
   }
   padding: 0 0 3.286rem;
@@ -133,14 +144,14 @@ const StyledDiv = styled.div`
 
   .ui--AddressSection {
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    // flex-direction: row;
+    // flex-wrap: nowrap;
     align-items: center;
-    width: 60%;
 
     .ui--AddressSection__AddressColumn {
       flex: 1;
-      margin-left: 1rem;
+      // margin-left: 1rem;
+      padding: 0 1rem;
 
       .ui--AccountName {
         max-width: 21.5rem;
@@ -167,8 +178,11 @@ const StyledDiv = styled.div`
 
   .ui--AddressMenu-addr {
     word-break: break-all;
-    width: 24ch;
-    margin: 0.571rem 0;
+    width: 100%;
+    // white-space: nowrap;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    margin: 0.5rem 0 0;
     color: var(--color-label);
   }
 
@@ -198,7 +212,7 @@ const StyledDiv = styled.div`
   }
 
   section {
-    position: relative;
+    // position: relative;
 
     &:not(:last-child) {
       margin-bottom: 1rem;
@@ -290,7 +304,7 @@ const StyledDiv = styled.div`
     align-items: center;
 
     .ui--FormatBalance:first-of-type {
-      margin-bottom: 0.4rem;
+      margin-bottom: 0rem;
     }
 
     .ui--FormatBalance {
@@ -356,10 +370,15 @@ const StyledDiv = styled.div`
     padding: 1rem;
     overflow: auto;
     width: 38%;
+
     margin: 0 1rem 0 1rem;
     border: 1px solid var(--border-card);
     border-radius: 1rem;
     background-color: var(--bg-menubar);
+    
+    @media only screen and (max-width: 1400px) {
+      width: 98%;
+    }
   }
 
   .ui--LinkSection {

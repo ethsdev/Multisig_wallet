@@ -129,7 +129,9 @@ export default React.memo(Selection);
 const StyledDiv = styled.div`
   .extrinsics--Extrinsic {
     display: flex;
-    padding-right: 3rem;
+    .ui.selection.dropdown {
+      word-wrap: normal !important;
+    }
     .ui--Params-Container {
       .ui--Params-Content {
         display: flex;
@@ -139,7 +141,7 @@ const StyledDiv = styled.div`
     }
     .ui--Address-Extrinsic {
       width: 48%;
-      padding-right: 6rem;
+      padding-right: 3rem;
       padding-top: 4rem;
     }
     .ui--Params-Decoded-Button {
@@ -149,7 +151,7 @@ const StyledDiv = styled.div`
       border-radius: 1rem;
       display: flex;
       flex-direction: column;
-      row-gap: 3rem;
+      row-gap: 2rem;
       .ui--Button-Group {
         margin: 0;
         .ui--Button {
@@ -194,7 +196,18 @@ const StyledDiv = styled.div`
       }
     }
   }
-  .ui--InputAddress {
+  .ui--CopyButton {
+    top: 1rem !important;
+    right: 1.3rem !important;
+    .ui--Button {
+      padding: 0 !important;
+    }
+  }
+  .default {
+    left: -3rem !important;
+  }
+  .address {
+    width: 70%;
   }
   .empty-account {
     width: 100%;
@@ -211,6 +224,13 @@ const StyledDiv = styled.div`
       font-size: var(--font-size-h3);  
       p {
         padding-left: 1rem;
-      }
+      } 
     }
+  }
+
+  @media only screen and (max-width: 1440px) {
+    > .name {
+      margin-left: 2rem;
+    }
+  }
 `
