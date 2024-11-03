@@ -90,10 +90,11 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
 const StyledDiv = styled.div`
   background-color: var(--bg-menubar);
   border-radius: 1rem;
-
+  height: 100%;
   .summary-box-contacts {
     align-items: center;
-    padding-left: 2rem;
+    padding-left: 3rem;
+    padding-top: 1rem;
   }
   .add-contact-button {
     border: 1px solid var(--border-button);

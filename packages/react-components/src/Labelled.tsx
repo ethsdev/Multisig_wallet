@@ -59,7 +59,7 @@ const StyledDiv = styled.div`
     }
 
     .withEllipsis {
-      overflow: hidden;
+      // overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
@@ -91,7 +91,7 @@ const StyledDiv = styled.div`
           left: 0rem;
           right: 0;
           text-align: left;
-          top: -1.5rem;
+          top: -2rem;
         }
       }
 
@@ -141,9 +141,8 @@ const StyledDiv = styled.div`
         .ui.selection.dropdown {
           &:not(.floating) {
             padding-left: 4rem;
-            // padding-top: 1.75rem;
+            padding-top: 0.95rem;
           }
-
           &.floating {
             > .dropdown.icon {
               top: 1.25rem;
@@ -157,7 +156,6 @@ const StyledDiv = styled.div`
 
           &.search:not(.multiple) > input.search {
             padding-left: 4rem;
-            // padding-top: 1.75rem;
           }
 
           > .delete.icon,

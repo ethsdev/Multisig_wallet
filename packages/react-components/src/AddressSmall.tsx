@@ -48,7 +48,7 @@ function AddressSmall ({ children, className = '', defaultName, overrideName, pa
         </AccountName>
         {value && withShortAddress && (
           <div
-            className='shortAddress'
+            className='shortAddress media--1300'
             data-testid='short-address'
           >
             {value.toString()}
@@ -62,12 +62,12 @@ function AddressSmall ({ children, className = '', defaultName, overrideName, pa
 const StyledDiv = styled.div`
   overflow-x: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  // white-space: nowrap;
 
   &.withPadding {
     // padding: 0.75rem 0;
     display: flex;
-    padding-right: 2rem;
+    // padding-right: 2rem;
     width: 100%;
   }
 
@@ -87,12 +87,9 @@ const StyledDiv = styled.div`
     // position: relative;
     display: flex;
     align-items: center;
+    // column-gap: 2rem;
     padding-left: 1rem;
-    width: 100%;
-
-    .parentName, .shortAddress {
-      // font-size: var(--font-size-tiny);
-    }
+    width: calc(100% - 42px);
 
     .parentName {
       left: 0;
@@ -102,7 +99,8 @@ const StyledDiv = styled.div`
 
     .shortAddress {
       font-size: var(--font-size-account-name);
-      left: 0;
+      width: 70%;
+      padding-left: 2rem;
       overflow: hidden;
       text-overflow: ellipsis;
     }
@@ -111,13 +109,18 @@ const StyledDiv = styled.div`
   .ui--AccountName {
     overflow: hidden;
     vertical-align: middle;
-    white-space: nowrap;
+    // white-space: nowrap;
     width: 30%;
 
     &.withSidebar {
       cursor: help;
     }
+      
+    @media only screen and (max-width: 1300px) {
+      width: 100%;
+    }
   }
+
 `;
 
 export default React.memo(AddressSmall);

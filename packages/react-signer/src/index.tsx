@@ -167,8 +167,8 @@ const StyledModal = styled(Modal)`
   .ui--Modal__body {
     .ui--Labelled:not(.isSmall):not(.isOuter) >label {
       left: -8rem;
-      top: 1.5rem;
-      width: 12%;
+      top: 0.7rem;
+      width: 14%;
     }
     .ui.selection.dropdown.ui--output.isDisabled {
       background-color: var(--bg-modal-input) !important;
@@ -183,6 +183,7 @@ const StyledModal = styled(Modal)`
       margin: 0 !important;
     } 
     .ui--Modal-Content {
+      padding-bottom: 2rem;
       .ui--Modal-Columns {
         .ui--Modal-Columns-content {
           .ui--Output {

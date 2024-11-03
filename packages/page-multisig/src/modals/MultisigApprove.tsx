@@ -180,6 +180,7 @@ function MultisigApprove ({ className = '', onClose, ongoing, threshold = 0, who
             onChange={setHash}
             options={hashes}
             value={hash}
+            className='ui--Pending-Callhash'
           />
         </Modal.Columns>
         {multisig && (
@@ -224,6 +225,7 @@ function MultisigApprove ({ className = '', onClose, ongoing, threshold = 0, who
             onChange={setType}
             options={callOptRef.current}
             value={type}
+            className='ui--Pending-Callhash'
           />
         </Modal.Columns>
         {whoFilter.length !== 0 && (
@@ -315,9 +317,16 @@ const StyledModal = styled(Modal)`
   }
   .ui--Labelled:not(.isSmall):not(.isOuter) >label {
     left: -15.5rem;
-    top: 1.5rem;
-    width: 20%;
+    top: 0.7rem;
+    width: 23%;
   }
+
+  @media only screen and (max-width: 1150px) {
+    .ui--Labelled:not(.isSmall):not(.isOuter) >label {
+      width: 27%;
+    }
+  }
+
   .ui.input.error input {
     background-color: var(--bg-modal-input) !important;
     border: none !important;
@@ -326,6 +335,14 @@ const StyledModal = styled(Modal)`
     background-color: var(--bg-modal-input) !important;
     border: none !important;
     opacity: 100% !important;
+  }
+  .ui--Pending-Callhash {
+    .ui--Labelled-content{
+      .ui {
+        padding-left: 1rem !important;
+      
+      }
+    }
   }
 `;
 
