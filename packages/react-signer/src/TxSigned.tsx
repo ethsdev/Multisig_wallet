@@ -423,7 +423,9 @@ function TxSigned ({ className, currentItem, isQueueSubmit, queueSize, requestAd
     return null;
   }
 
-  console.log('', setIsSubmit);
+  useEffect(() => {
+  }, [setIsSubmit])
+
   
   return (
     <>

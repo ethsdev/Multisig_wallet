@@ -24,7 +24,8 @@ function Tip ({ onChange }: Props): React.ReactElement<Props> | null {
     onChange(showTip ? tip : BN_ZERO);
   }, [onChange, showTip, tip]);
 
-  console.log('', setTip, setShowTip);
+  useEffect(() => {
+  }, [setTip, setShowTip])
   
   return (
     // <Modal.Columns

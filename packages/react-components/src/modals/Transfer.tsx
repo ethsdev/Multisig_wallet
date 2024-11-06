@@ -106,7 +106,8 @@ function Transfer ({ className = '', onClose, recipientId: propRecipientId, send
     : true;
   const canToggleAll = !isProtected && balances && balances.accountId?.eq(propSenderId || senderId) && maxTransfer && noReference;
 
-  console.log('', setIsProtected);
+  useEffect(() => {
+  }, [setIsProtected])
   
   return (
     <StyledModal

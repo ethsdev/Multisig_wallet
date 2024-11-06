@@ -76,7 +76,9 @@ function Overview ({ className = '' }: Props): React.ReactElement<Props> {
   const proxies = useProxies();
   const isNextTick = useNextTick();
 
-  console.log('', setSortBy);  
+  useEffect(() => {
+
+  }, [setSortBy])
 
   const setBalance = useCallback(
     (account: string, balance: AccountBalance) =>

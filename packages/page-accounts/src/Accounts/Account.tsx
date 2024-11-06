@@ -192,11 +192,10 @@ function Account ({ account: { address, meta }, className = '', delegation, filt
 
   const [isCopyShown, toggleIsCopyShown] = useToggle();
   const NOOP = () => undefined;
-
-  // console.log(democracyUnlockTx, referendaUnlockTx, vestingVestTx);
   
   useEffect((): void => {
     if (balancesAll) {
+      
       setBalance(address, {
         // some chains don't have "active" in the Ledger
         bonded: stakingInfo?.stakingLedger.active?.unwrap() || BN_ZERO,
@@ -395,24 +394,26 @@ function Account ({ account: { address, meta }, className = '', delegation, filt
         </td>
         <td className='actions button ui--Copy-Balance'>
           <div className='ui--Copy-Address'>
-            <CopyToClipboard
-              text={address}
-            >
-              <Button.Group>
-                <Button
-                  icon={isCopyShown ? 'check' : 'copy'}
-                  label={isCopyShown ? t('Copied') : t('Copy')}
-                  onClick={isCopyShown ? NOOP : toggleIsCopyShown }
-                  onMouseLeave={isCopyShown ? toggleIsCopyShown : NOOP }
-                />
-              </Button.Group>
-            </CopyToClipboard>
             <AddressInfo
               address={address}
               balancesAll={balancesAll}
               withBalance={BAL_OPTS_DEFAULT}
               withLabel
             />
+            <CopyToClipboard
+              text={address}
+            >
+              <span>
+                <Button.Group>
+                  <Button
+                    icon={isCopyShown ? 'check' : 'copy'}
+                    label={isCopyShown ? t('Copied') : t('Copy')}
+                    onClick={isCopyShown ? NOOP : toggleIsCopyShown }
+                    onMouseLeave={isCopyShown ? toggleIsCopyShown : NOOP }
+                  />
+                </Button.Group>
+              </span>
+            </CopyToClipboard>
           </div>
           <Button.Group>
             {(isFunction(api.tx.balances?.transferAllowDeath) || isFunction(api.tx.balances?.transfer)) && (
