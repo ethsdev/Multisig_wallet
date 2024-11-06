@@ -80,10 +80,8 @@ function Overview({ className = '' }: Props): React.ReactElement<Props> {
   const multiInfos = useMultisigApprovals(multisigAddress || '');
   const [isProxyOverviewOpen, toggleProxyOverview] = useToggle();
 
-
-
-  console.log("setFilter", setFilter);
-  console.log("setSortBy", setSortBy);
+  useEffect(() => {
+  }, [setFilter, setSortBy])
 
 
   const setBalance = useCallback(
