@@ -12,6 +12,8 @@ import { expandEndpoints } from './util.js';
 export { CUSTOM_ENDPOINT_KEY } from './development.js';
 export * from './production.js';
 export * from './testing.js';
+// import dotenv from 'dotenv';
+// dotenv.config();
 
 function defaultT (keyOrText: string, text?: string | TOptions, options?: TOptions): string {
   return (
