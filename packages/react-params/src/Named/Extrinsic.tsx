@@ -21,7 +21,6 @@ import { isUndefined, objectSpread } from '@polkadot/util';
 
 import paramComponents from '../Extra/index.js';
 import { balanceCalls, balanceCallsOverrides } from '../overrides.js';
-// import ExtrinsicsTransfer from './ExtrinsicsTransfer.js';
 
 interface Props {
   className?: string;
