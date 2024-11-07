@@ -152,9 +152,7 @@ function Account({ account: { address, meta }, className = '', delegation, filte
   const [isUndelegateOpen, toggleUndelegate] = useToggle();
 
   useEffect(() => {
-    if(democracyUnlockTx && referendaUnlockTx && vestingVestTx) {
-
-    }
+    if(democracyUnlockTx && referendaUnlockTx && vestingVestTx) {}
   },[])
 
 
@@ -259,16 +257,6 @@ function Account({ account: { address, meta }, className = '', delegation, filte
             withShortAddress
             isActive={multisigAddress === address ? true : false}
           />
-          {/* <Menu.Item
-            icon='sitemap'
-            key='proxy-overview'
-            label={proxy?.[0].length
-              ? t('Manage proxies')
-              : t('Add proxy')
-            }
-            className='proxyItem'
-            onClick={toggleProxyOverview}
-          /> */}
           {isBackupOpen && (
             <Backup
               address={address}
