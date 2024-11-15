@@ -120,7 +120,7 @@ function Signer ({ children, className = '' }: Props): React.ReactElement<Props>
     },
     [currentItem, queueSetTxStatus]
   );
-
+  
   return (
     <>
       {children}
@@ -155,10 +155,8 @@ const StyledModal = styled(Modal)`
     bottom: 1.5rem;
     left: 1.5rem;
     position: absolute;
-
     .ui--Toggle {
       display: inline-block;
-
       &+.ui--Toggle {
         margin-left: 1rem;
       }
@@ -167,7 +165,7 @@ const StyledModal = styled(Modal)`
   .ui--Modal__body {
     .ui--Labelled:not(.isSmall):not(.isOuter) >label {
       left: -8rem;
-      top: 0.7rem;
+      top: 1.1rem;
       width: 14%;
     }
     .ui.selection.dropdown.ui--output.isDisabled {
@@ -190,6 +188,7 @@ const StyledModal = styled(Modal)`
             .ui--Labelled-content {
               .ui {
                 padding-left: 1rem !important;
+                padding-top: 1.2rem;
               }
             }
           }
